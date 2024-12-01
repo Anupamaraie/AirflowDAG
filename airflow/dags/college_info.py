@@ -15,9 +15,8 @@ class College(BaseModel):
     affiliation: Optional[str] = None # optional since they may not always exist
     address: Optional[str] = None 
 
-colleges_list = []
-
 def extract():
+    colleges_list = []
     url = requests.get('https://edusanjal.com/college')
     # Checking if the url was successful or not
     if url.status_code != 200:
@@ -54,34 +53,36 @@ def extract():
             except ValidationError as e:
                 print(f"Validation error for {college_name}: {e}")
                 continue
+    college_pd = pd.DataFrame(colleges_list)
+    college_pd.to_csv('colleges.csv', index=False)
     logging.info('Data successfully extracted!')
 
 def transform():
-    global colleges_list
-
+    
+    df = pd.read_csv('colleges.csv')
     replacements = {
         'Tribhuvan University': 'TU',
         'National Examinations Board': 'NEB',
         'Pokhara University':'PU'
     }
-    college_pd = pd.DataFrame(colleges_list)
-    print(college_pd.columns)
-    college_pd['affiliation'] = college_pd['affiliation'].replace(replacements, regex=True)
-    college_pd[['location', 'city']] = college_pd['address'].str.rsplit(',', n=1, expand=True)
-    college_pd.drop('address', axis=1, inplace=True)
+    print(df.columns)
+    df['affiliation'] = df['affiliation'].replace(replacements, regex=True)
+    df[['location', 'city']] = df['address'].str.rsplit(',', n=1, expand=True)
+    df.drop('address', axis=1, inplace=True)
     
-    college_pd.to_csv('colleges.csv', index=False)
+    df.to_csv('transformed_collegedata.csv')
     logging.info('Data successfully transformed!')
 
 
 def load():
-    df = pd.read_csv('college_info.csv')
+    df = pd.read_csv('transformed_collegedata.csv')
+    print(df)
     logging.info('Data loaded to csv successfully!')
 
 
 dag = DAG(
     'collegeinfo_dag',
-    default_args={'start_date': dt.datetime.today()},
+    default_args={'start_date': dt.datetime(2024,11,25)},
     # schedule_interval='0 20 * * *',
     schedule_interval=None, #trigger manually
     catchup=False

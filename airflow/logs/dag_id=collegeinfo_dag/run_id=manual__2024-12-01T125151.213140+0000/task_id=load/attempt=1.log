@@ -1,0 +1,46 @@
+[2024-12-01T12:53:12.521+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2024-12-01T12:53:12.520+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: collegeinfo_dag.load manual__2024-12-01T12:51:51.213140+00:00 [queued]>
+[2024-12-01T12:53:12.598+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: collegeinfo_dag.load manual__2024-12-01T12:51:51.213140+00:00 [queued]>
+[2024-12-01T12:53:12.601+0000] {taskinstance.py:2866} INFO - Starting attempt 1 of 1
+[2024-12-01T12:53:12.815+0000] {taskinstance.py:2889} INFO - Executing <Task(PythonOperator): load> on 2024-12-01 12:51:51.213140+00:00
+[2024-12-01T12:53:13.176+0000] {logging_mixin.py:190} WARNING - /home/airflow/.local/lib/python3.12/site-packages/airflow/task/task_runner/standard_task_runner.py:70 DeprecationWarning: This process (pid=364) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2024-12-01T12:53:13.191+0000] {standard_task_runner.py:72} INFO - Started process 378 to run task
+[2024-12-01T12:53:13.156+0000] {standard_task_runner.py:104} INFO - Running: ['airflow', 'tasks', 'run', 'collegeinfo_dag', 'load', 'manual__2024-12-01T12:51:51.213140+00:00', '--job-id', '51', '--raw', '--subdir', 'DAGS_FOLDER/college_info.py', '--cfg-path', '/tmp/tmpn12ko2_8']
+[2024-12-01T12:53:13.196+0000] {standard_task_runner.py:105} INFO - Job 51: Subtask load
+[2024-12-01T12:53:14.001+0000] {task_command.py:467} INFO - Running <TaskInstance: collegeinfo_dag.load manual__2024-12-01T12:51:51.213140+00:00 [running]> on host ade260fe4ef6
+[2024-12-01T12:53:14.947+0000] {taskinstance.py:3132} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='airflow' AIRFLOW_CTX_DAG_ID='collegeinfo_dag' AIRFLOW_CTX_TASK_ID='load' AIRFLOW_CTX_EXECUTION_DATE='2024-12-01T12:51:51.213140+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2024-12-01T12:51:51.213140+00:00'
+[2024-12-01T12:53:14.980+0000] {taskinstance.py:731} INFO - ::endgroup::
+[2024-12-01T12:53:15.952+0000] {logging_mixin.py:190} INFO -     Unnamed: 0                                               name  ...                                  location        city
+0            0                       Thames International College  ...  Surya Bikram Gyawali Marg, Old Baneshwor   Kathmandu
+1            1                 Texas College of Management and IT  ...                                    Siphal   Kathmandu
+2            2                        Ace Institute of Management  ...         Bibhuti Janak Marg, New Baneshwor   Kathmandu
+3            3                                NCTTM - IST College  ...    Gyaneshwor, Opposite to German Embassy   Kathmandu
+4            4  Kathford International College of Engineering ...  ...                                 Balkumari    Lalitpur
+5            5     Nepal College of Information Technology (NCIT)  ...                                 Balkumari    Lalitpur
+6            6                                 Padmashree College  ...                                   Tinkune   Kathmandu
+7            7                                    Liberty College  ...                 Pragati Marg-2, Anamnagar   Kathmandu
+8            8             Certified College of Accountancy (CCA)  ...                  Thapagaun, New Baneshwor   Kathmandu
+9            9                         Janamaitri Multiple Campus  ...                                 Kuleshwor   Kathmandu
+10          10         Silver Mountain School of Hotel Management  ...                                 Lainchaur   Kathmandu
+11          11                       Global College of Management  ...                             Mid-Baneshwor   Kathmandu
+12          12                                    People's Campus  ...                                  Paknajol   Kathmandu
+13          13                                       NAMI College  ...     Gokarneshwor-7, Jorpati, Gokarneshwar   Kathmandu
+14          14                                       SAIM College  ...                        Old Baneswor Chowk   Kathmandu
+15          15                        Kathmandu Don Bosco College  ...       Lazimpat, (North to Hotel Radisson)   Kathmandu
+16          16                                Public Youth Campus  ...                                Dhobichaur   Kathmandu
+17          17                                      Prime College  ...                       Naya Bazar, Khusibu   Kathmandu
+18          18                                  KIST College & SS  ...                              Kamalpokhari   Kathmandu
+19          19                                 Nepal Mega College  ...                                Babarmahal   Kathmandu
+20          20  Tribhuvan University School of Management  (SO...  ...                                  Kirtipur   Kathmandu
+21          21  Kantipur College of Management and Information...  ...                             Mid Baneshwor   Kathmandu
+22          22                                The British College  ...                   Trade Tower, Thapathali   Kathmandu
+23          23            Softwarica College of IT and E-commerce  ...                                Dillibazar   Kathmandu
+
+[24 rows x 5 columns]
+[2024-12-01T12:53:15.954+0000] {college_info.py:80} INFO - Data loaded to csv successfully!
+[2024-12-01T12:53:15.955+0000] {python.py:240} INFO - Done. Returned value was: None
+[2024-12-01T12:53:16.003+0000] {taskinstance.py:340} INFO - ::group::Post task execution logs
+[2024-12-01T12:53:16.004+0000] {taskinstance.py:352} INFO - Marking task as SUCCESS. dag_id=collegeinfo_dag, task_id=load, run_id=manual__2024-12-01T12:51:51.213140+00:00, execution_date=20241201T125151, start_date=20241201T125312, end_date=20241201T125316
+[2024-12-01T12:53:16.198+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 0
+[2024-12-01T12:53:16.427+0000] {taskinstance.py:3895} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2024-12-01T12:53:16.438+0000] {local_task_job_runner.py:245} INFO - ::endgroup::
