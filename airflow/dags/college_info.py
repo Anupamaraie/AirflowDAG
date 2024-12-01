@@ -54,20 +54,36 @@ def extract():
             except ValidationError as e:
                 print(f"Validation error for {college_name}: {e}")
                 continue
-    college_pd = pd.DataFrame(colleges_list)
-    college_pd.to_csv('college_info.csv', index=False)
     logging.info('Data successfully extracted!')
+
+def transform():
+    global colleges_list
+
+    replacements = {
+        'Tribhuvan University': 'TU',
+        'National Examinations Board': 'NEB',
+        'Pokhara University':'PU'
+    }
+    college_pd = pd.DataFrame(colleges_list)
+    print(college_pd.columns)
+    college_pd['affiliation'] = college_pd['affiliation'].replace(replacements, regex=True)
+    college_pd[['location', 'city']] = college_pd['address'].str.rsplit(',', n=1, expand=True)
+    college_pd.drop('address', axis=1, inplace=True)
+    
+    college_pd.to_csv('colleges.csv', index=False)
+    logging.info('Data successfully transformed!')
 
 
 def load():
-    print('This is load function!!')
+    df = pd.read_csv('college_info.csv')
     logging.info('Data loaded to csv successfully!')
 
 
 dag = DAG(
     'collegeinfo_dag',
     default_args={'start_date': dt.datetime.today()},
-    schedule_interval='0 20 * * *',
+    # schedule_interval='0 20 * * *',
+    schedule_interval=None, #trigger manually
     catchup=False
 )
 
@@ -77,10 +93,16 @@ extract_task = PythonOperator(
     dag=dag
 )
 
+transform_task = PythonOperator(
+    task_id='transform',
+    python_callable=transform,
+    dag=dag
+)
+
 load_task = PythonOperator(
     task_id='load',
     python_callable=load,
     dag=dag
 )
 
-extract_task >> load_task
+extract_task >> transform_task >> load_task
