@@ -1,3 +1,0 @@
-[2024-11-30T16:55:34.767+0000] {processor.py:186} INFO - Started process (PID=151) to work on /opt/airflow/dags/college_info.py
-[2024-11-30T16:55:34.798+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/college_info.py for tasks to queue
-[2024-11-30T16:55:34.854+0000] {logging_mixin.py:190} INFO - [2024-11-30T16:55:34.828+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/college_info.py
