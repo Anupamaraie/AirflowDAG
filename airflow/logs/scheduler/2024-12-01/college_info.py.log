@@ -942,3 +942,10 @@ sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) database is locked
 [2024-12-01T12:55:32.407+0000] {logging_mixin.py:190} INFO - [2024-12-01T12:55:32.405+0000] {dag.py:3239} INFO - Sync 1 DAGs
 [2024-12-01T12:55:32.515+0000] {logging_mixin.py:190} INFO - [2024-12-01T12:55:32.514+0000] {dag.py:4180} INFO - Setting next_dagrun for collegeinfo_dag to None, run_after=None
 [2024-12-01T12:55:32.708+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/college_info.py took 6.546 seconds
+[2024-12-01T12:56:03.576+0000] {processor.py:186} INFO - Started process (PID=392) to work on /opt/airflow/dags/college_info.py
+[2024-12-01T12:56:03.597+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/college_info.py for tasks to queue
+[2024-12-01T12:56:03.619+0000] {logging_mixin.py:190} INFO - [2024-12-01T12:56:03.608+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/college_info.py
+[2024-12-01T12:56:08.807+0000] {processor.py:925} INFO - DAG(s) 'collegeinfo_dag' retrieved from /opt/airflow/dags/college_info.py
+[2024-12-01T12:56:09.389+0000] {logging_mixin.py:190} INFO - [2024-12-01T12:56:09.387+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2024-12-01T12:56:09.831+0000] {logging_mixin.py:190} INFO - [2024-12-01T12:56:09.830+0000] {dag.py:4180} INFO - Setting next_dagrun for collegeinfo_dag to None, run_after=None
+[2024-12-01T12:56:10.757+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/college_info.py took 7.313 seconds
